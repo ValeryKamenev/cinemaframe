@@ -6,6 +6,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<link rel="icon" href="img/icon-dop.png">
+<link rel="apple-touch-icon" href="img/icon-dop.png">
 <style>
 /* Layout: a product page in the Apple manner. Black stage, centred chapter openers, real screenshots
    in device frames, bento tiles for the detail. Color comes from the subject: dusk orange for the
@@ -67,6 +69,7 @@ p { margin: 0; }
 .link { color: var(--blue); text-decoration: none; font-size: 1.0625rem; }
 .link:hover { text-decoration: underline; }
 .link::after { content: " ›"; }
+.chapter-head p .link { font-size: inherit; white-space: nowrap; }
 
 /* hero */
 .hero { text-align: center; padding-block: clamp(56px, 9vw, 104px) 0; overflow: hidden; }
@@ -211,7 +214,11 @@ p { margin: 0; }
 .app b { font-size: 1.1875rem; letter-spacing: -.015em; }
 .app span { color: var(--fg-2); font-size: .9375rem; margin-top: -8px; }
 footer { border-top: 1px solid var(--line); padding-block: 22px 40px; color: var(--fg-3); font-size: .75rem; line-height: 1.5; }
-footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; }
+footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: baseline; }
+.foot-links { display: flex; flex-wrap: wrap; gap: 6px 20px; }
+footer a { color: var(--fg-2); text-decoration: none; }
+footer a:hover { color: var(--fg); text-decoration: underline; }
+.foot-note { max-width: 46em; }
 
 /* motion: content is visible at rest; where scroll timelines exist, chapters rise into place */
 @supports (animation-timeline: view()) {
@@ -541,6 +548,7 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
     <div class="chapter-head rise">
       <div class="kicker k-green">Privacy and reliability</div>
       <h2 id="tr-h">Your project stays with you.</h2>
+      <p>No accounts, no tracking, no analytics. <a class="link" href="privacy.html">Read the privacy policy</a></p>
     </div>
     <div class="trust stage">
       <article class="tile rise">
@@ -575,8 +583,8 @@ footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: s
 
 <footer>
   <div class="wrap">
-    <span>© 2026 CinemaFrame</span>
-    <span>Screens from the iOS Simulator; the pictures in the frame are photos from Unsplash. Camera and lens specs come from manufacturers’ published data.</span>
+    <div class="foot-links"><span>© 2026 CinemaFrame</span><a href="privacy.html">Privacy Policy</a><a href="#download">Beta</a></div>
+    <span class="foot-note">Screens from the iOS Simulator; the pictures in the frame are photos from <a href="https://unsplash.com">Unsplash</a>. Camera and lens specs come from manufacturers’ published data.</span>
   </div>
 </footer>
 
