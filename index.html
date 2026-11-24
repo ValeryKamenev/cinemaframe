@@ -1,7 +1,19 @@
+<!doctype html>
+<html lang="en">
+<head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CinemaFrame</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="CinemaFrame — your cinema camera’s frame on iPhone">
+<meta property="og:description" content="The exact frame of 220 cinema cameras and 1,024 lens series, exposure tools, the sun’s path, and a director’s monitor on iPhone and iPad.">
+<meta property="og:url" content="https://valerykamenev.github.io/cinemaframe/">
+<meta property="og:image" content="https://valerykamenev.github.io/cinemaframe/img/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="color-scheme" content="dark">
 <meta name="description" content="CinemaFrame: your cinema camera’s viewfinder on iPhone, and a director’s monitor on iPhone and iPad.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,11 +47,12 @@
   color-scheme: dark;
 }
 * { box-sizing: border-box; }
-html { scroll-behavior: smooth; scroll-padding-top: 64px; }
-body { background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.47; letter-spacing: -.012em; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+html { scroll-behavior: smooth; scroll-padding-top: 64px; -webkit-tap-highlight-color: transparent; -webkit-text-size-adjust: 100%; }
+body { margin: 0; background: var(--bg); color: var(--fg); font-family: var(--font); font-size: 16px; line-height: 1.47; letter-spacing: 0; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
 body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 30; background: var(--bg); }
 img { display: block; max-width: 100%; height: auto; }
 a { color: inherit; }
+a, button { touch-action: manipulation; }
 h1, h2, h3 { margin: 0; font-weight: 700; text-wrap: balance; }
 p { margin: 0; }
 :focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; border-radius: 8px; }
@@ -57,17 +70,21 @@ p { margin: 0; }
 .brand img { width: 26px; height: 26px; border-radius: 7px; }
 .nav-links { display: flex; gap: 26px; margin-left: auto; font-size: .8125rem; }
 .nav-links a { text-decoration: none; color: rgba(245,245,247,.8); transition: color .2s ease; }
-.nav-links a:hover { color: var(--fg); }
-.nav .btn { padding: 6px 14px; font-size: .8125rem; }
-@media (max-width: 860px) { .nav-links { display: none; } .nav .btn { margin-left: auto; } }
-@media (max-width: 380px) { .brand span { display: none; } }
+.nav .btn { padding: 6px 14px; font-size: .8125rem; min-height: 32px; }
+@media (max-width: 860px) {
+  html { scroll-padding-top: 96px; }
+  .nav .wrap { flex-wrap: wrap; height: auto; row-gap: 0; padding-top: 6px; }
+  .nav .brand, .nav .btn { min-height: 44px; }
+  .nav .btn { margin-left: auto; padding-inline: 16px; }
+  .nav-links { order: 3; width: 100%; margin: 0 -22px; padding: 0 22px; gap: 22px; overflow-x: auto; scrollbar-width: none; white-space: nowrap; }
+  .nav-links::-webkit-scrollbar { display: none; }
+  .nav-links a { display: inline-flex; align-items: center; min-height: 40px; }
+}
 
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 6px; padding: 10px 20px; border-radius: 999px; font-size: 1rem; font-weight: 500; text-decoration: none; white-space: nowrap; border: 0; transition: transform .1s ease-out, background-color .2s ease; }
 .btn:active { transform: scale(.97); }
 .btn-blue { background: var(--blue-btn); color: #fff; }
-.btn-blue:hover { background: #2a95ff; }
 .link { color: var(--blue); text-decoration: none; font-size: 1rem; }
-.link:hover { text-decoration: underline; }
 .link::after { content: " ›"; }
 .chapter-head p .link { font-size: inherit; white-space: nowrap; }
 
@@ -86,11 +103,11 @@ p { margin: 0; }
 
 /* device frames, sized from the real screenshot ratios (iPhone 2868×1320, iPad 1668×2420) */
 .phone { position: relative; background: #0b0b0c; border-radius: clamp(22px, 5.4vw, 64px); padding: clamp(6px, 1.05vw, 13px); box-shadow: inset 0 0 0 1.5px #3a3a3d, inset 0 0 0 4px #1a1a1c, 0 40px 90px -30px rgba(0,0,0,.9); }
-.phone img { border-radius: clamp(16px, 4.4vw, 52px); width: 100%; aspect-ratio: 2868 / 1320; object-fit: cover; }
+.phone img { background: #111113; border-radius: clamp(16px, 4.4vw, 52px); width: 100%; aspect-ratio: 2868 / 1320; object-fit: cover; }
 .phone.sm { border-radius: clamp(18px, 3.2vw, 40px); padding: clamp(5px, .7vw, 9px); }
 .phone.sm img { border-radius: clamp(13px, 2.6vw, 32px); }
 .ipad { background: #0b0b0c; border-radius: clamp(20px, 3vw, 34px); padding: clamp(8px, 1.2vw, 14px); box-shadow: inset 0 0 0 1.5px #3a3a3d, 0 40px 90px -30px rgba(0,0,0,.9); }
-.ipad img { border-radius: clamp(12px, 1.9vw, 22px); width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
+.ipad img { background: #111113; border-radius: clamp(12px, 1.9vw, 22px); width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 
 /* numbers */
 .numbers { padding-block: clamp(64px, 8vw, 96px) 0; }
@@ -147,10 +164,16 @@ p { margin: 0; }
 .meter.peak { background: radial-gradient(circle at 30% 50%, transparent 18px, #ff2d55 19px 20px, transparent 21px), radial-gradient(circle at 62% 46%, transparent 10px, #ff2d55 11px 12px, transparent 13px), linear-gradient(90deg, #1c1c1f, #2b2b30); }
 
 /* look switcher on the real viewfinder */
-.look-stage .phone img { transition: filter .45s var(--ease); }
+.vf { position: relative; }
+.vf .graded { position: absolute; inset: 0; height: 100%; background: none; clip-path: inset(1.9% 16.1% 13.8% 12%); transition: filter .45s var(--ease); }
 .seg { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 4px; padding: 4px; border-radius: 999px; background: var(--tile-2); margin: 28px auto 0; }
 .seg button { appearance: none; border: 0; background: transparent; color: var(--fg-2); font: 500 .875rem/1 var(--font); padding: 9px 15px; border-radius: 999px; cursor: pointer; transition: background-color .25s var(--ease), color .25s var(--ease), transform .1s ease-out; }
 .seg button:active { transform: scale(.96); }
+@media (max-width: 640px) {
+  .seg { display: flex; flex-wrap: nowrap; justify-content: flex-start; max-width: 100%; overflow-x: auto; scrollbar-width: none; }
+  .seg::-webkit-scrollbar { display: none; }
+  .seg button { flex: none; min-height: 40px; }
+}
 .seg button[aria-pressed="true"] { background: var(--fg); color: #000; }
 .center { text-align: center; }
 
@@ -159,11 +182,12 @@ p { margin: 0; }
 
 /* framed photo with data strip */
 .framed { background: #fff; border-radius: 6px; padding: 10px 10px 0; box-shadow: 0 30px 70px -30px rgba(0,0,0,.9); transform: rotate(-1.2deg); }
-.framed .pic { aspect-ratio: 2.39 / 1; overflow: hidden; border-radius: 2px; }
+.framed .pic { background: #1d1d1f; aspect-ratio: 2.39 / 1; overflow: hidden; border-radius: 2px; }
 .framed .pic img { width: 100%; height: 100%; object-fit: cover; }
 .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 12px; padding: 12px 4px 14px; font-family: var(--mono); font-size: clamp(.5625rem, 1.05vw, .75rem); color: #1d1d1f; letter-spacing: 0; }
 .strip span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .strip b { font-weight: 600; }
+@media (max-width: 640px) { .strip { grid-template-columns: repeat(2, minmax(0, 1fr)); font-size: .6875rem; } .strip span { white-space: normal; } }
 
 /* plan & rental mocks, drawn in the app's own list style */
 .ui { background: #000; border-radius: 18px; border: 1px solid var(--line); padding: 16px; font-size: .875rem; }
@@ -217,8 +241,14 @@ footer { border-top: 1px solid var(--line); padding-block: 22px 40px; color: var
 footer .wrap { display: flex; flex-wrap: wrap; gap: 8px 24px; justify-content: space-between; align-items: baseline; }
 .foot-links { display: flex; flex-wrap: wrap; gap: 6px 20px; }
 footer a { color: var(--fg-2); text-decoration: none; }
-footer a:hover { color: var(--fg); text-decoration: underline; }
+.foot-links a { display: inline-block; padding-block: 10px; margin-block: -10px; }
 .foot-note { max-width: 46em; }
+@media (hover: hover) and (pointer: fine) {
+  .nav-links a:hover { color: var(--fg); }
+  .btn-blue:hover { background: #2a95ff; }
+  .link:hover { text-decoration: underline; }
+  footer a:hover { color: var(--fg); text-decoration: underline; }
+}
 
 /* motion: content is visible at rest; where scroll timelines exist, chapters rise into place */
 @supports (animation-timeline: view()) {
@@ -232,6 +262,8 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition: none !important; animation: none !important; } }
 @media (prefers-reduced-transparency: reduce) { .nav { background: #161617; backdrop-filter: none; -webkit-backdrop-filter: none; } }
 </style>
+</head>
+<body>
 
 <nav class="nav" aria-label="Main">
   <div class="wrap">
@@ -260,7 +292,6 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
     <div class="hero-device">
       <div class="phone"><img src="img/viewfinder.jpg" width="2000" height="921" alt="CinemaFrame viewfinder: a close-up in red light in an ALEXA Mini LF 4.3K LF 16:9 frame with a 2.39:1 mask, 28 mm lens, T2.8, depth of field 2.3–4.2 m"></div>
     </div>
-    <p class="note">A real app screen. The simulator has no camera, so the picture is a photo fed through the same pipeline.</p>
   </div>
 </header>
 
@@ -335,7 +366,7 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
       <p>False Color, zebras and focus peaking work just like on a field monitor. Looks and your own LUTs apply live and are <b>baked into photos and video</b>.</p>
     </div>
     <div class="stage look-stage rise">
-      <div class="phone sm"><img id="look-img" src="img/vf-portrait.jpg" width="1800" height="828" loading="lazy" alt="Viewfinder with the selected look: a portrait in a 1.85:1 frame"></div>
+      <div class="phone sm"><div class="vf"><img src="img/vf-portrait.jpg" width="1800" height="828" loading="lazy" alt="Viewfinder with the selected look: a portrait in a 1.85:1 frame"><img class="graded" id="look-img" src="img/vf-portrait.jpg" width="1800" height="828" loading="lazy" alt=""></div></div>
       <div class="center">
         <div class="seg" role="group" aria-label="Look" id="looks">
           <button type="button" aria-pressed="true" data-filter="none">Neutral</button>
@@ -345,7 +376,7 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
           <button type="button" aria-pressed="false" data-filter="grayscale(1) contrast(1.12)">Black &amp; White</button>
           <button type="button" aria-pressed="false" data-filter="saturate(.55) brightness(.6) contrast(1.15) hue-rotate(190deg)">Day for Night</button>
         </div>
-        <p style="color:var(--fg-3);font-size:.875rem;margin-top:14px">Built-in looks, plus importing your own .cube LUT. The preview here is approximate.</p>
+        <p style="color:var(--fg-3);font-size:.875rem;margin-top:14px">Built-in looks, plus your own .cube LUTs. The look changes the picture, never the frame lines or controls; the preview here is approximate.</p>
       </div>
     </div>
     <div class="bento" style="margin-top:40px">
@@ -386,21 +417,21 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
       <p>T and DIST rings sit to the right of the frame. Below it, a line shows the zone of sharpness and the hyperfocal distance. <b>LiDAR</b> measures the distance to the subject.</p>
     </div>
     <div class="tile dof stage rise" style="padding-block:clamp(28px,4vw,48px)">
-      <svg viewBox="0 0 360 96" role="img" aria-label="Focus scale: focus at 3 m, sharp from 2.7 to 3.4 m, hyperfocal 23 m">
+      <svg viewBox="0 0 360 96" role="img" aria-label="Focus scale: focus at 3 m, sharp from 2.3 to 4.2 m, hyperfocal 10 m">
         <rect x="12" y="40" width="336" height="4" rx="2" fill="#2c2c2e"/>
-        <rect x="135" y="35" width="16.8" height="14" rx="4" fill="#2997ff"/>
-        <line x1="142.7" y1="27" x2="142.7" y2="57" stroke="#ffb340" stroke-width="2"/>
-        <line x1="291.3" y1="31" x2="291.3" y2="53" stroke="#a1a1a6" stroke-width="1.5" stroke-dasharray="2 2"/>
+        <rect x="123" y="35" width="43.7" height="14" rx="4" fill="#2997ff"/>
+        <line x1="142.3" y1="27" x2="142.3" y2="57" stroke="#ffb340" stroke-width="2"/>
+        <line x1="230.4" y1="31" x2="230.4" y2="53" stroke="#a1a1a6" stroke-width="1.5" stroke-dasharray="2 2"/>
         <g font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="9" fill="#6e6e73" text-anchor="middle">
           <text x="12" y="72">0.5</text><text x="62.4" y="72">1</text><text x="113" y="72">2</text><text x="180" y="72">5</text><text x="230.4" y="72">10</text><text x="280.8" y="72">20</text><text x="348" y="72">∞</text>
         </g>
         <g font-family="ui-monospace, SF Mono, Menlo, monospace" font-size="9.5" text-anchor="middle">
-          <text x="142.7" y="18" fill="#ffb340">DIST 3.0 m</text>
-          <text x="143.4" y="90" fill="#2997ff">DOF 2.7–3.4 m</text>
-          <text x="291.3" y="22" fill="#a1a1a6">H 23 m</text>
+          <text x="142.3" y="18" fill="#ffb340">DIST 3.0 m</text>
+          <text x="144.8" y="90" fill="#2997ff">DOF 2.3–4.2 m</text>
+          <text x="230.4" y="22" fill="#a1a1a6">H 10 m</text>
         </g>
       </svg>
-      <p class="center mono" style="color:var(--fg-3);font-size:.8125rem;margin-top:8px">ALEXA 35 · 4K 16:9 · 35 mm · T2.8</p>
+      <p class="center mono" style="color:var(--fg-3);font-size:.8125rem;margin-top:8px">ALEXA Mini LF · 4.3K LF 16:9 · 28 mm · T2.8</p>
     </div>
   </div>
 </section>
@@ -584,14 +615,12 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
 <footer>
   <div class="wrap">
     <div class="foot-links"><span>© 2026 CinemaFrame</span><a href="privacy.html">Privacy Policy</a><a href="#download">Beta</a></div>
-    <span class="foot-note">Screens from the iOS Simulator; the pictures in the frame are photos from <a href="https://unsplash.com">Unsplash</a>. Camera and lens specs come from manufacturers’ published data.</span>
+    <span class="foot-note">Real app screens from the iOS Simulator, which has no camera, so the picture in the frame is a photo fed through the same pipeline. Photos from <a href="https://unsplash.com">Unsplash</a>. Camera and lens specs come from manufacturers’ published data.</span>
   </div>
 </footer>
 
 <script>
 (function () {
-  document.documentElement.lang = 'en';
-
   // Look switcher on the real viewfinder screenshot.
   var img = document.getElementById('look-img');
   var buttons = document.querySelectorAll('#looks button');
@@ -604,3 +633,5 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
   });
 })();
 </script>
+</body>
+</html>
