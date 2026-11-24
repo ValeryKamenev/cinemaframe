@@ -90,7 +90,7 @@ p { margin: 0; }
 .phone.sm { border-radius: clamp(18px, 3.2vw, 40px); padding: clamp(5px, .7vw, 9px); }
 .phone.sm img { border-radius: clamp(13px, 2.6vw, 32px); }
 .ipad { background: #0b0b0c; border-radius: clamp(20px, 3vw, 34px); padding: clamp(8px, 1.2vw, 14px); box-shadow: inset 0 0 0 1.5px #3a3a3d, 0 40px 90px -30px rgba(0,0,0,.9); }
-.ipad img { border-radius: clamp(12px, 1.9vw, 22px); width: 100%; aspect-ratio: 758 / 1100; object-fit: cover; }
+.ipad img { border-radius: clamp(12px, 1.9vw, 22px); width: 100%; aspect-ratio: 3 / 4; object-fit: cover; }
 
 /* numbers */
 .numbers { padding-block: clamp(64px, 8vw, 96px) 0; }
@@ -160,7 +160,7 @@ p { margin: 0; }
 /* framed photo with data strip */
 .framed { background: #fff; border-radius: 6px; padding: 10px 10px 0; box-shadow: 0 30px 70px -30px rgba(0,0,0,.9); transform: rotate(-1.2deg); }
 .framed .pic { aspect-ratio: 2.39 / 1; overflow: hidden; border-radius: 2px; }
-.framed .pic img { width: 100%; height: 100%; object-fit: cover; object-position: 40% 40%; }
+.framed .pic img { width: 100%; height: 100%; object-fit: cover; }
 .strip { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 4px 12px; padding: 12px 4px 14px; font-family: var(--mono); font-size: clamp(.5625rem, 1.05vw, .75rem); color: #1d1d1f; letter-spacing: 0; }
 .strip span { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .strip b { font-weight: 600; }
@@ -258,7 +258,7 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
   </div>
   <div class="wrap wide">
     <div class="hero-device">
-      <div class="phone"><img src="img/viewfinder.jpg" width="2000" height="920" alt="CinemaFrame viewfinder: mountains above the clouds in an ALEXA 35 4K 16:9 frame with a 2.39:1 mask, 21 mm lens, T2.8, depth of field 2.2–4.7 m"></div>
+      <div class="phone"><img src="img/viewfinder.jpg" width="2000" height="921" alt="CinemaFrame viewfinder: a close-up in red light in an ALEXA Mini LF 4.3K LF 16:9 frame with a 2.39:1 mask, 28 mm lens, T2.8, depth of field 2.3–4.2 m"></div>
     </div>
     <p class="note">A real app screen. The simulator has no camera, so the picture is a photo fed through the same pipeline.</p>
   </div>
@@ -335,7 +335,7 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
       <p>False Color, zebras and focus peaking work just like on a field monitor. Looks and your own LUTs apply live and are <b>baked into photos and video</b>.</p>
     </div>
     <div class="stage look-stage rise">
-      <div class="phone sm"><img id="look-img" src="img/vf-portrait.jpg" width="1800" height="828" loading="lazy" alt="Viewfinder with the selected look"></div>
+      <div class="phone sm"><img id="look-img" src="img/vf-portrait.jpg" width="1800" height="828" loading="lazy" alt="Viewfinder with the selected look: a portrait in a 1.85:1 frame"></div>
       <div class="center">
         <div class="seg" role="group" aria-label="Look" id="looks">
           <button type="button" aria-pressed="true" data-filter="none">Neutral</button>
@@ -350,12 +350,12 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
     </div>
     <div class="bento" style="margin-top:40px">
       <article class="tile s3 rise">
-        <div class="phone sm"><img src="img/vf-falsecolor.jpg" width="1400" height="644" loading="lazy" alt="False Color on a portrait: exposure zones in color"></div>
+        <div class="phone sm"><img src="img/vf-falsecolor.jpg" width="1400" height="644" loading="lazy" alt="False Color on a figure under a street lamp in fog: exposure zones in color"></div>
         <h3>False Color</h3>
         <p>Exposure by zone in color: what’s crushed, what’s skin, what’s clipping.</p>
       </article>
       <article class="tile s3 rise">
-        <div class="phone sm"><img src="img/vf-peaking.jpg" width="1400" height="644" loading="lazy" alt="Focus peaking on a photographer above the clouds: sharp edges highlighted"></div>
+        <div class="phone sm"><img src="img/vf-peaking.jpg" width="1400" height="644" loading="lazy" alt="Focus peaking on a profile: sharp edges highlighted in yellow"></div>
         <h3>Focus peaking</h3>
         <p>Sharp edges light up, and the focus point is easy to read at a glance.</p>
       </article>
@@ -414,7 +414,7 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
       <p>Point the phone at the horizon and the sun’s path for the whole day appears over the live frame, hour by hour. Shoot photos and video with the line in place to keep for the crew.</p>
     </div>
     <div class="stage rise">
-      <div class="phone"><img src="img/sunpath.jpg" width="1800" height="828" loading="lazy" alt="SUN PATH over a mountain valley: the sun’s arc marked from 13:00 to sunset at 16:26"></div>
+      <div class="phone"><img src="img/sunpath.jpg" width="1800" height="828" loading="lazy" alt="SUN PATH over mountain ridges at sunset: the sun’s arc marked from 13:00 to sunset at 16:23"></div>
     </div>
     <div class="bento">
       <article class="tile s2 rise"><h3>Align</h3><p>If the compass drifts, nudge the sky by hand. The whole arc moves together and never bends.</p></article>
@@ -434,10 +434,10 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
     </div>
     <div class="split stage">
       <div class="framed rise" aria-label="Example photo with a data strip">
-        <div class="pic"><img src="img/fox-photo.jpg" width="1400" height="931" loading="lazy" alt=""></div>
+        <div class="pic"><img src="img/fox-photo.jpg" width="1400" height="586" loading="lazy" alt=""></div>
         <div class="strip">
-          <span><b>ALEXA 35</b> · 4K 16:9</span><span>Signature 35 mm</span><span>2.39:1 · FOV 39.1°</span>
-          <span>Scene 4 · Shot 2</span><span>Filmic</span><span>T2.8 · 3.0 m</span>
+          <span><b>ALEXA Mini LF</b> · 4.3K LF 16:9</span><span>Spherical 28 mm</span><span>2.39:1 · FOV 64.9°</span>
+          <span>Scene 4 · Shot 2</span><span>Neutral</span><span>T2.8 · 3.0 m</span>
           <span>Nov 13, 2026 · 18:24</span><span>Heading 236° · tilt 2°</span><span>CinemaFrame</span>
         </div>
       </div>
@@ -522,8 +522,8 @@ footer a:hover { color: var(--fg); text-decoration: underline; }
       <p>Scan the QR code on the camera and the picture goes straight over Wi-Fi between the devices. <b>No internet needed on set.</b></p>
     </div>
     <div class="dir-stage stage rise">
-      <div class="phone"><img src="img/dir-live.jpg" width="1800" height="828" loading="lazy" alt="DIR Live: a close-up from the camera, REC at 24 fps, scene 4 take 2 and a strip of takes"></div>
-      <div class="ipad"><img src="img/ipad-shots.jpg" width="758" height="1100" loading="lazy" alt="DIR on iPad: takes sorted by scene"></div>
+      <div class="phone"><img src="img/dir-live.jpg" width="1800" height="828" loading="lazy" alt="DIR Live: a couple at sunset from the camera, 24 fps, scene 4 take 2 and a strip of takes"></div>
+      <div class="ipad"><img src="img/ipad-shots.jpg" width="900" height="1200" loading="lazy" alt="DIR on iPad: takes sorted by scene"></div>
     </div>
     <div class="bento">
       <article class="tile s3 rise"><span class="label">Live</span><h3>A monitor that stays on.</h3><p>Full brightness and a locked orientation if you want them, REC and frame rate in the header. The storyboard can sit on top of the live picture.</p></article>
